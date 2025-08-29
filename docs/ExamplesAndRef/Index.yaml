@@ -1,0 +1,59 @@
+features_file_references:
+  Contextual_Lens:
+    description: "The primary USP. A user-invoked tool that analyzes the current file context and synthesizes related information from the local index."
+    implementation_references:
+      # Identifying Context (ContextMonitor)
+      - concept: "**Foundations of Context and Neural Fields**"
+        details: "Core documents defining context, molecular structures, neural fields, and their architectural mapping."
+        files:
+          - "**docs/ExamplesAndRef/Contextual_Lens/ContextMonitor/molecules_context.md**" # Foundational for context structures [1]
+          - "**docs/ExamplesAndRef/Contextual_Lens/ContextMonitor/neural_fields_foundations.md**" # Foundational for neural fields [1]
+          - "**docs/ExamplesAndRef/Contextual_Lens/ContextMonitor/user-schemas.md**" # Example of context schemas [2]
+          - "**docs/ExamplesAndRef/Contextual_Lens/ContextMonitor/minimal_context.yaml**" # Basic context template [3]
+          - "docs/ExamplesAndRef/Contextual_Lens/ContextMonitor/field_mapping.md" # Reference for mapping context as a field [4]
+          - "docs/ExamplesAndRef/Contextual_Lens/ContextMonitor/field-architecture.md" # Architecture for field-based context [5]
+      # Searching Index for Resonant Attractors (SearchService)
+      - concept: "**Retrieval, Attractors, and Resonance**"
+        details: "Documents on actively retrieving information, understanding attractor dynamics, and measuring field resonance."
+        files:
+          - "**docs/ExamplesAndRef/Contextual_Lens/SearchService/rag_recipes.py**" # Retrieval-Augmented Generation patterns [6]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SearchService/retrieval_indexing.md**" # Guide to retrieval system design [4]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SearchService/attractor_dynamics.md**" # Theory and practice of attractors [4]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SearchService/attractor.co.emerge.shell.md**" # Protocol for co-emergence of attractors [8]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SearchService/field_resonance_measure.py**" # Template for measuring field resonance [7]
+      # Synthesizing Results (SynthesisService)
+      - concept: "**Cognitive Tools and Research Architectures for Synthesis**"
+        details: "Frameworks and templates for structured reasoning, information extraction, and synthesis."
+        files:
+          - "docs/ExamplesAndRef/Contextual_Lens/SynthesisService/README.md**" # Overview of cognitive tools [9]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SynthesisService/composition.md**" # Templates for combining multiple tools [2]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SynthesisService/program-library.py**" # Python implementations of cognitive programs [2]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SynthesisService/research-architecture.md**" # Architecture for information synthesis [1]
+          - "**docs/ExamplesAndRef/Contextual_Lens/SynthesisService/cognitive_patterns.md**" # Catalog of reasoning patterns [4]
+
+  Persistent_Adaptive_Memory:
+    description: "An evolving, on-device memory system that allows the assistant to learn from conversations."
+    implementation_references:
+      # Attractor Dynamics: Key facts become 'attractors' that are strengthened through use and decay over time.
+      - concept: "**Persistence, Resonance, and Attractor Dynamics in Memory**"
+        details: "Foundational concepts for how information persists, resonates, and forms stable patterns over time in memory."
+        files:
+          - "**docs/ExamplesAndRef/Memory/Attractor Dynamics/persistence_and_resonance.md**" # Explores persistence and resonance in neural fields [6]
+          - "**docs/ExamplesAndRef/Memory/Attractor Dynamics/emergence_and_attractor_dynamics.md**" # Details emergence and attractor dynamics [6]
+          - "**docs/ExamplesAndRef/Memory/Attractor Dynamics/attractor_dynamics.md**" # Reference for attractor theory and practice [4]
+          - "**docs/ExamplesAndRef/Memory/Attractor Dynamics/recursive.memory.attractor.shell.md**" # Protocol for memory as attractors [8]
+          - "**docs/ExamplesAndRef/Memory/Attractor Dynamics/context.memory.persistence.attractor.shell.md**" # Protocol for context memory persistence [8]
+      # Tiered Memory: Manages Episodic (chat history) and Semantic (key facts) memory separately.
+      - concept: "**MEM1 Framework for Memory-Reasoning Synergy**"
+        details: "Principles and implementations for efficient, reasoning-driven memory consolidation for long-horizon agents."
+        files:
+          - "**docs/ExamplesAndRef/Memory/Tiered Memory/cells_memory.md**" # Foundational for stateful conversations and memory management [1
+          - "**docs/ExamplesAndRef/Memory/Tiered Memory/schema-library.yaml**" # Contains `mem1_template` and `long_horizon_memory` schemas [11, 12]
+          - "docs/ExamplesAndRef/Memory/Tiered Memory/program-library.py" # Includes `MemoryReasoningEngine` [2]
+          - "docs/ExamplesAndRef/Memory/Tiered Memory/token_budgetng.md" # Discusses selective retention and memory systems in token budgeting [13, 14]
+      # Self-Repair: Basic inconsistency detection flags and updates conflicting information.
+      - concept: "**Field Self-Repair Protocols and Agents**"
+        details: "Mechanisms for detecting and resolving inconsistencies within the context and memory system."
+        files:
+          - "**docs/ExamplesAndRef/Memory/Self-Repair/field.self_repair.shell.md**" # Protocol for self-repair mechanisms [8]
+          - "docs/ExamplesAndRef/Memory/Self-Repair/meta.correctProtocol" # Includes a `/meta.correct` protocol for error identification and correction [16]

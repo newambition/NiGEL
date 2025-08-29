@@ -1,0 +1,76 @@
+DesktopAIAssistant_Schema:
+  version: "1.0.0"
+  description: "A schema defining the V1 architecture and capabilities of the AI Desktop Assistant, a privacy-first, contextual assistant for macOS."
+
+  # 1. System Configuration & Runtime Environment
+  System_Configuration:
+    name: "AI Desktop Assistant"
+    runtime: "Google Gemini API"
+    platform: "macOS"
+    resource_management:
+      # Defines how the application manages the LLM's context window.
+      token_budgeting:
+        # Before an API call, the SynthesisService will check the prompt size.
+        # If it exceeds the token limit, it will apply the following rule.
+        threshold_rules:
+          - "history.summarize: when='history > 40% of context_window', method='priority_based'"
+
+  # 2. Cognitive Architecture
+  Cognitive_Architecture:
+    description: "A modular, service-oriented architecture where a central orchestrator manages the data flow between specialized components. See ProjectBlueprint.md for the full diagram."
+    components:
+      - UIManager:
+          description: "Renders the PyQt6 interface and handles user interaction."
+      - ContextMonitor:
+          description: "A listener thread that detects a global hotkey and identifies the user's active on-screen context (e.g., selected file)."
+      - IndexingService:
+          description: "A background service that monitors local folders, parses files, and maintains the vector index."
+      - SearchService:
+          description: "Measures the 'resonance' between the current context and the indexed documents by performing a vector similarity search."
+      - SynthesisService:
+          description: "Acts as a Cognitive Tool Executor, wrapping requests to the LLM in structured prompts and managing the token budget."
+      - StateManager:
+          description: "Manages the application's entire state, including user settings, API keys, and the Persistent & Adaptive Memory system."
+
+  # 3. Core Functionality (V1 Features)
+  Core_Functionality:
+    Contextual_Lens:
+      description: "The primary USP. A user-invoked tool that analyzes the current file context and synthesizes related information from the local index."
+      invocation: "Global Hotkey"
+      process:
+        - "Identify Context (ContextMonitor)"
+        - "Search Index for Resonant Attractors (SearchService)"
+        - "Synthesize Results (SynthesisService)"
+
+    Persistent_Adaptive_Memory:
+      description: "An evolving, on-device memory system that allows the assistant to learn from conversations."
+      principles:
+        - "Attractor Dynamics": "Key facts become 'attractors' that are strengthened through use and decay over time."
+        - "Tiered Memory": "Manages Episodic (chat history) and Semantic (key facts) memory separately."
+        - "Self-Repair": "Basic inconsistency detection flags and updates conflicting information (e.g., a changed deadline)."
+
+    AI_Tooling:
+      - Web_Search:
+          description: "Allows the assistant to access real-time information from the internet to answer questions about current events."
+      - Multimodal_Input: # A 'Should Have' feature
+          description: "Allows users to upload files (PDF, TXT) and images to the chat for analysis."
+
+  # 4. Data Models
+  Data_Models:
+    description: "Key data structures used for communication between components."
+    Context_Object:
+      description: "The standardized object passed from the ContextMonitor after invocation."
+      fields: { type: string, source_app: string, content_path: string }
+    Vector_Index_Metadata:
+      description: "The metadata stored alongside each vector in the search index."
+      fields:
+        {
+          source_file: string,
+          chunk_id: int,
+          text_content: string,
+          last_modified: timestamp,
+        }
+    Memory_Attractor_Object:
+      description: "The structure for a single persistent memory item within the StateManager."
+      fields:
+        { key: string, values: list, strength: float, last_accessed: timestamp }

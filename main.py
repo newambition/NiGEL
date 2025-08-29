@@ -26,7 +26,7 @@ image_path = resource_path("nigel.png")
 
 # Configure Gemini API
 MODEL_NAME = "gemini-2.0-flash"
-genai.configure(api_key="AIzaSyDWI4MZGoes22zdtD6JQcsU1Y8AOb5AoDY")
+genai.configure(api_key="AIzaSyD3gFPHqElnbPWSZc33-duNli7oanfhdYI")
 
 # Initialize persona
 nigel_persona = Persona(
@@ -77,7 +77,7 @@ Please respond as Nigel, taking into account my personality traits and knowledge
 def get_icon_path(icon):
     # Use a pre-existing system icon for simplicity
     # You can replace this with your own custom icon later
-    return image_path
+    return "nigel.png"
 
 # Custom dropdown widget that appears from the system tray
 class NiGELDropdown(QMainWindow):
@@ -244,7 +244,7 @@ class NiGELDropdown(QMainWindow):
             return
             
         # Display user message
-        self.conversation.append(f"<span style='color: white; font-weight: bold;'>You:</span> {message}")
+        self.conversation.append(f"<span style='color: white; font-weight: bold; margin-top: 10px;'>You:</span> {message}")
         self.input_field.clear()
         
         # Indicate processing
@@ -328,7 +328,7 @@ class NiGELApp(QApplication):
             # Make a more visible icon - a filled circle
             draw.ellipse((10, 10, 54, 54), fill="black")
             draw.ellipse((15, 15, 49, 49), fill="white")
-            draw.   ellipse((20, 20, 44, 44), fill="blue")
+            draw.ellipse((20, 20, 44, 44), fill="blue")
             
             # Save temporary icon
             image.save(icon_path)
